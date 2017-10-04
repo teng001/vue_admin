@@ -1,0 +1,9 @@
+/node_modules
+/.idea
+/.env
+/path.php
+/public/fonts
+/public/images
+/public/js
+/public/css
+/vue_dir/config/dev.env.js
