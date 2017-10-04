@@ -43,7 +43,7 @@ class RoleController extends Controller
         try {
             $postData = $request->input();
             $result = $roleService->saveRole($postData);
-            return $this->ajaxSuccess('success', $result);
+            return $this->ajaxTipSuccess('添加成功', $result);
         } catch (\Exception $e) {
             return $this->ajaxTipError($e->getMessage(), $e->getMessage());
         }
@@ -55,7 +55,7 @@ class RoleController extends Controller
             $roleId = $request->input('id');
             $permissionList = $request->input('permissionArr');
             $roleService->saveRolePermissionList($roleId, $permissionList);
-            return $this->ajaxTipSuccess('添加成功', '');
+            return $this->ajaxTipSuccess('修改成功', '');
         } catch (\Exception $e) {
             return $this->ajaxTipError($e->getMessage(), '');
         }

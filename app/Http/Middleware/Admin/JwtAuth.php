@@ -12,7 +12,7 @@ use App\Traits\Controller\AjaxTraits;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Middleware\BaseMiddleware;
-
+use ComLog;
 class JwtAuth extends BaseMiddleware
 {
     use AjaxTraits;
@@ -27,6 +27,7 @@ class JwtAuth extends BaseMiddleware
     public function handle($request, \Closure $next)
     {
         $route = $request->route()->getName();
+        ComLog::write('jwt',$request);
         if (!$token = $this->auth->setRequest($request)->getToken()) {
             return $this->ajaxAdminLoginOutSuccess('token不能为空', 'token_not_provided');
             //return $this->respond('tymon.jwt.absent', 'token_not_provided', 400);
@@ -52,10 +53,7 @@ class JwtAuth extends BaseMiddleware
         $user = $this->auth->toUser($token);
 
         $this->events->fire('tymon.jwt.valid', $user);
-        if($user->is_admin>0){
-            return $next($request);
-        }else{
-            return $this->ajaxAdminLoginOutSuccess('用户类型错误', 'user_type_error');
-        }
+
+        return $next($request);
     }
 }

@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { fetchUserList } from '@/api/user'
+import { fetchUserList, fetchDelUser } from '@/api/user'
 export default {
   methods: {
     getpagelist() {
@@ -57,7 +57,7 @@ export default {
       this.$router.push({ path: '/permission/user/detail/0' })
     },
     del(id) {
-      console.log(id)
+      fetchDelUser(this.tableData[id].id)
     }
   },
   created() {

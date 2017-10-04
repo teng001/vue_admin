@@ -11,5 +11,8 @@ namespace App\Contracts\Admin;
 
 interface UserContractInterface
 {
-
+    //保存用户信息
+    public function saveUser($postData);
+    //删除用户
+    public function delUser($id);
 }

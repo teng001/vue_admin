@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Contracts\Admin\UserContractInterface;
 use App\Http\Controllers\Controller;
 use App\RepositoryInterface\Admin\UserRepositoryInterface;
 use App\Traits\Controller\AjaxTraits;
@@ -51,12 +52,22 @@ class UserController extends Controller
         return $this->ajaxSuccess('success', $result);
     }
 
-    public function saveUser(Request $request, UserRepositoryInterface $userRepository)
+    public function saveUser(Request $request, UserContractInterface $userService)
     {
         try {
             $postData = $request->input();
-            $result = $userRepository->saveUser($postData);
-            return $this->ajaxSuccess('success', $result);
+            $result = $userService->saveUser($postData);
+            return $this->ajaxTipSuccess('添加成功', $result);
+        } catch (\Exception $e) {
+            return $this->ajaxTipError($e->getMessage(), '');
+        }
+    }
+
+    public function delUser($id, UserContractInterface $userService)
+    {
+        try {
+            $result = $userService->delUser($id);
+            return $this->ajaxTipSuccess('删除成功', $result);
         } catch (\Exception $e) {
             return $this->ajaxTipError($e->getMessage(), '');
         }

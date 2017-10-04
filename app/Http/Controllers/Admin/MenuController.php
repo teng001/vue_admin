@@ -12,7 +12,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\RepositoryInterface\Admin\PermissionRepositoryInterface;
 use App\Traits\Controller\AjaxTraits;
-
+use Tymon\JWTAuth\JWTAuth;
+use Illuminate\Http\Request;
 class MenuController extends Controller
 {
     use AjaxTraits;
@@ -38,7 +39,7 @@ class MenuController extends Controller
      * ]
      * ]]
      */
-    public function menuList(PermissionRepositoryInterface $permissionRepository)
+    public function menuList(Request $request,JWTAuth $JWTAuth,PermissionRepositoryInterface $permissionRepository)
     {
 //        $data = [
 //            [
@@ -121,6 +122,9 @@ class MenuController extends Controller
         ]
         },
          */
+        $token = $JWTAuth->setRequest($request)->getToken();
+        $user = $JWTAuth->toUser($token);
+        $user->id;
         $data = $permissionRepository->getMenuList();
         return $this->ajaxSuccess('success', $data);
     }

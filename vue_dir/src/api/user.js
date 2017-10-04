@@ -22,3 +22,10 @@ export function fetchSaveUser(param) {
     params: param
   })
 }
+
+export function fetchDelUser(id) {
+  return fetch({
+    url: '/admin/delUser/' + id,
+    method: 'get'
+  })
+}

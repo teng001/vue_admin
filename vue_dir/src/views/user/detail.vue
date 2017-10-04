@@ -2,7 +2,10 @@
   <div class="app-container">
     <el-form ref="userDetail" :model="userDetail" label-width="160px">
       <el-form-item label="用户名">
-        <el-input disabled v-model="userDetail.username"></el-input>
+        <el-input v-model="userDetail.username"></el-input>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input v-model="userDetail.password"></el-input>
       </el-form-item>
       <el-form-item label="邮箱">
         <el-input v-model="userDetail.email"></el-input>
@@ -34,9 +37,10 @@ export default {
       userDetail: {
         id: '',
         username: '',
+        password: '',
         email: '',
         is_super: '1',
-        user_roles: ''
+        user_roles: []
       },
       roleList: []
     }
@@ -73,10 +77,10 @@ export default {
           } else {
             t.userDetail.is_super = '0'
           }
-          fetchUserRoleList().then(response => {
-            this.roleList = response.data.data
-          })
         }
+        fetchUserRoleList().then(response => {
+          this.roleList = response.data.data
+        })
       }).catch(error => {
         console.log(error)
       })

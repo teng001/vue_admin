@@ -30,10 +30,7 @@ class Kernel extends HttpKernel
         'admin.authPermission'     => 'App\Http\Middleware\Admin\AuthPermission',
         'wechat.gettoken' =>'App\Http\Middleware\CheckAccessToken',
         'jwt.auth' => 'App\Http\Middleware\GetUserFromToken',
-        'intermediary.jwt.auth' => 'App\Http\Middleware\Intermediary\JwtAuth',
-        'company.jwt.auth' => 'App\Http\Middleware\Company\JwtAuth',
         'admin.jwt.auth' => 'App\Http\Middleware\Admin\JwtAuth',
-        'member.jwt.auth' => 'App\Http\Middleware\Member\JwtAuth',
         //'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken',
         //'wx.token'=>'App\Http\Middleware\CheckAccessToken'
     ];

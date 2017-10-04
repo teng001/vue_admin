@@ -15,6 +15,5 @@ interface UserRepositoryInterface
     public function getUserPageList($where, $perPage, $order);
     //获取用户详情
     public function userDetail($id);
-    //保存用户信息
-    public function saveUser($postData);
+
 }

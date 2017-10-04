@@ -39,13 +39,5 @@ class UserRepository implements UserRepositoryInterface
         return $result;
     }
 
-    public function saveUser($postData)
-    {
-        $saveData = $this->userModel->filterRequestData($postData);
-        $userData = $this->userModel->saveInfo($saveData);
-        if (is_array($postData['user_roles']) && !empty($postData['user_roles'])) {
-            $userData->roles()->sync($postData['user_roles']);
-        }
-        return $userData;
-    }
+
 }
