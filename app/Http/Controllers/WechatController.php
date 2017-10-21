@@ -63,9 +63,9 @@ class WechatController extends Controller
                 $request->session()->clear();
                 if ($request->session()->get(env('INTERMEDIARY_SESSION_KEY'))) {
                     $user=$request->session()->get(env('INTERMEDIARY_SESSION_KEY'));
-                    if(isset($user->intermediary_id)&&$user->intermediary_id>0){
+                    if (isset($user->intermediary_id)&&$user->intermediary_id>0) {
                         $jumpUrl = 'http://' . env('APP_DOMAIN_HOME') . '/#/intermediary/recruit_list';
-                    }else{
+                    } else {
                         $jumpUrl = 'http://' . env('APP_DOMAIN_HOME') . '/#/intermediary_login/' . Crypt::encrypt($signOpenId);   //openid加密
                     }
                 } else {
@@ -75,9 +75,9 @@ class WechatController extends Controller
             case 'member':
                 if ($request->session()->get(env('MEMBER_SESSION_KEY'))) {
                     $user=$request->session()->get(env('MEMBER_SESSION_KEY'));
-                    if(isset($user->admin_user_id)&&$user->admin_user_id>0){
+                    if (isset($user->admin_user_id)&&$user->admin_user_id>0) {
                         $jumpUrl = 'http://' . env('APP_DOMAIN_HOME') . '/#/member';
-                    }else{
+                    } else {
                         $request->session()->clear();
                         $jumpUrl = 'http://' . env('APP_DOMAIN_HOME') . '/#/member_login/' . Crypt::encrypt($signOpenId);   //openid加密
                     }

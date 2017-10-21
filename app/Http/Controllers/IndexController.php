@@ -10,10 +10,11 @@ namespace App\Http\Controllers;
 
 use JWTAuth;
 use App\Models\Admin\AdminUser;
+
 class IndexController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         echo '123';
     }
-
 }
