@@ -47,7 +47,7 @@ class JwtAuth extends BaseMiddleware
             //return $this->respond('tymon.jwt.user_not_found', 'user_not_found', 404);
         }
         if (!$user->can($route)) {  //判断登录用户权限
-            return $this->ajaxResponse('error', '权限不足啊', '');
+            //return $this->ajaxResponse('error', '权限不足啊', '');
         }
         $token = $this->auth->setRequest($request)->getToken();
         $user = $this->auth->toUser($token);
