@@ -14,7 +14,7 @@
 |
 */
 
-define('LARAVEL_DIR_PATH',  __DIR__ . '/../laravel_framework/Laravel5.1');
+define('LARAVEL_DIR_PATH',  __DIR__ . '/../laravel_framework/Laravel5.3');
 
 /*
 |--------------------------------------------------------------------------
