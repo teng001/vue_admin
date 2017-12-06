@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'Toplan\\Sms' => array($vendorDir . '/toplan/laravel-sms/src'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
+    'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
 );

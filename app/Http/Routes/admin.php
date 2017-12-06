@@ -5,6 +5,13 @@
  */
 
 
+Route::group(['prefix' => 'swagger'], function () {
+    Route::get('json', 'SwaggerController@getJSON');
+    Route::get('my-data', 'SwaggerController@getMyData');
+});
+
+
+
 /**
  * 监听二级域名：admin.xxx.com
  * 管理后台的Controller位于Controllers/Admin下

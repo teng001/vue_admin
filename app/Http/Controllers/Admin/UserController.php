@@ -19,7 +19,7 @@ use Tymon\JWTAuth\JWTAuth;
 class UserController extends Controller
 {
     use AjaxTraits;
-
+    
     public function userInfo(JWTAuth $JWTAuth, Request $request)
     {
         $token = $JWTAuth->setRequest($request)->getToken();

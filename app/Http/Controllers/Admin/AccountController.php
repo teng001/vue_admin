@@ -18,6 +18,41 @@ use Tymon\JWTAuth\JWTAuth;
 class AccountController extends Controller
 {
     use  AjaxTraits;
+    /**
+     * @SWG\Post(
+     *     path="/admin/login",
+     *     summary="用户登录",
+     *     tags={"User"},
+     *     operationId="Login",
+     *     description="Login",
+     *     produces={"application/json"},
+     *     @SWG\Parameter(
+     *         name="username",
+     *         in="formData",
+     *         description="用户名",
+     *         type="string",
+     *         required=true,
+     *     ),
+     *    @SWG\Parameter(
+     *         name="password",
+     *         in="formData",
+     *         description="密码",
+     *          type="string",
+     *         required=true,
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="返回成功"
+     *     ),
+     *     @SWG\Response(
+     *         response="default",
+     *         description="返回成功",
+     *         @SWG\Schema(ref="#/definitions/errorModel")
+     *     )
+     * )
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
 
     public function login(JWTAuth $JWTAuth, Request $request, AdminUserRepositoryInterface $adminUserRepository)
     {
